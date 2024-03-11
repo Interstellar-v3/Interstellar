@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 })
-// Proccy
+// Dyn
 document.addEventListener('DOMContentLoaded', function () {
   function pChange(selectedValue) {
     if (selectedValue === 'uv') {
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var storedP = localStorage.getItem('uv')
     if (storedP === 'true') {
       pChangeElement.value = 'uv'
-    } else if (localStorage.getItem('dy') === 'true') {
+    } else if (localStorage.getItem('dy') === 'true' || 'auto') {
       pChangeElement.value = 'dy'
     } else {
       pChangeElement.value = 'uv'
@@ -286,5 +286,34 @@ function toggleAB() {
     localStorage.setItem('ab', 'false')
   } else {
     localStorage.setItem('ab', 'true')
+  }
+}
+// Search Engine
+function EngineChange(dropdown) {
+  var selectedEngine = dropdown.value
+
+  var engineUrls = {
+    Google: 'https://www.google.com/search?q=',
+    Bing: 'https://www.bing.com/search?q=',
+    DuckDuckGo: 'https://duckduckgo.com/?q=',
+    Qwant: 'https://www.qwant.com/?q=',
+    Startpage: 'https://www.startpage.com/search?q=',
+    SearchEncrypt: 'https://www.searchencrypt.com/search/?q=',
+    Ecosia: 'https://www.ecosia.org/search?q=',
+  }
+
+  localStorage.setItem('engine', engineUrls[selectedEngine])
+  localStorage.setItem('enginename', selectedEngine)
+
+  dropdown.value = selectedEngine
+}
+
+function SaveEngine() {
+  var customEngine = document.getElementById('engine-form').value
+  if (customEngine.trim() !== '') {
+    localStorage.setItem('engine', customEngine)
+    localStorage.setItem('enginename', 'Custom')
+  } else {
+    alert('Please enter a custom search engine value.')
   }
 }
