@@ -37,7 +37,7 @@
   },
   {
     "name": "Movie Web",
-    "link": "https://movie-web.app",
+    "link": "https://edu-movie-web.vercel.app",
     "image": "/assets/media/icons/movie-web.webp",
     "categories": ["all", "media", "stream"]
   },
